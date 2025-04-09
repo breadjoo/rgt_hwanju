@@ -3,8 +3,10 @@ package rgt.server.book.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import rgt.server.book.dto.BookRequestDto;
 import rgt.server.book.dto.BookResponseDto;
 import rgt.server.book.exception.BookNotFoundException;
+import rgt.server.book.model.Books;
 import rgt.server.book.model.BooksMapper;
 
 import java.util.List;
@@ -28,5 +30,18 @@ public class BookService {
         return booksMapper.getBookById(id)
                 .map(BookResponseDto::from)
                 .orElseThrow(() -> new BookNotFoundException("해당 책을 찾을 수 없습니다. ID: " + id));
+    }
+
+    public BookResponseDto addBook(BookRequestDto dto) {
+        Books book = Books.builder()
+                .title(dto.getTitle())
+                .author(dto.getAuthor())
+                .description(dto.getDescription())
+                .price(dto.getPrice())
+                .stock(dto.getStock())
+                .build();
+
+        booksMapper.addBook(book);
+        return BookResponseDto.from(book);
     }
 }

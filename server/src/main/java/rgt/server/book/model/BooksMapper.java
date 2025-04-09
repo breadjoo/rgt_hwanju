@@ -10,4 +10,6 @@ public interface BooksMapper {
     List<Books> getAllBooks();
 
     Optional<Books> getBookById(Long id);
+
+    void addBook(Books book);
 }

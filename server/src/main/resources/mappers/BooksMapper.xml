@@ -13,5 +13,11 @@
         WHERE id = #{id}
     </select>
 
+    <insert id="addBook" parameterType="Books" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO books
+            (title, author, description, price, stock)
+        VALUES (#{title}, #{author}, #{description}, #{price}, #{stock})
+    </insert>
+
 
 </mapper>
