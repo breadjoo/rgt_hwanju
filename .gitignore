@@ -1,0 +1,12 @@
+# client
+/client/node_modules
+/client/build
+
+# server
+/server/.gradle
+/server/build
+
+# general
+*.log
+.DS_Store
+.env
