@@ -5,6 +5,17 @@ client/node_modules/
 client/.env
 client/build/
 client/.DS_Store
+client/.idea/
+client/.vscode/
+
+# CRA (React) default ignores
+client/.pnp
+client/.pnp.js
+client/coverage
+client/.env.local
+client/.env.development.local
+client/.env.test.local
+client/.env.production.local
 
 # npm log files
 npm-debug.log*
@@ -20,10 +31,8 @@ server/.factorypath
 server/.springBeans
 server/.sts4-cache
 server/bin/
-
-# IDE configs (VSCode, WebStorm, etc.)
-client/.idea/
-client/.vscode/
+server/.idea/
+server/.vscode/
 
 # =====================================
 # Java / Spring Boot (server)
@@ -34,15 +43,8 @@ server/out/
 server/.classpath
 server/.project
 server/.settings/
-server/.idea/
-server/.vscode/
 server/.DS_Store
-
-# Log files
 server/logs/
-*.log
-
-# Local config
 server/*.iml
 server/.env
 
