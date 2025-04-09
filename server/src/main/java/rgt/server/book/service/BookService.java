@@ -9,6 +9,7 @@ import rgt.server.book.exception.BookNotFoundException;
 import rgt.server.book.model.Books;
 import rgt.server.book.model.BooksMapper;
 
+import java.awt.print.Book;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,6 +43,18 @@ public class BookService {
                 .build();
 
         booksMapper.addBook(book);
+        return BookResponseDto.from(book);
+    }
+    public BookResponseDto updateBook(Long id, BookRequestDto dto) {
+        Books book = booksMapper.getBookById(id)
+                .orElseThrow(() -> new BookNotFoundException("해당 책은 존재하지 않습니다. id " + id));
+
+        book.setTitle(dto.getTitle());
+        book.setAuthor(dto.getAuthor());
+        book.setDescription(dto.getDescription());
+        book.setPrice(dto.getPrice());
+        book.setStock(dto.getStock());
+        booksMapper.updateBook(book);
         return BookResponseDto.from(book);
     }
 }

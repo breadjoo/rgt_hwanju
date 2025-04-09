@@ -19,5 +19,15 @@
         VALUES (#{title}, #{author}, #{description}, #{price}, #{stock})
     </insert>
 
+    <update id="updateBook" parameterType="Books">
+        UPDATE books
+        SET title = #{title},
+            author = #{author},
+            description = #{description},
+            price = #{price},
+            stock = #{stock}
+        WHERE id = #{id}
+    </update>
+
 
 </mapper>

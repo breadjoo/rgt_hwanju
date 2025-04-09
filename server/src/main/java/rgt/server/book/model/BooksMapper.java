@@ -12,4 +12,5 @@ public interface BooksMapper {
     Optional<Books> getBookById(Long id);
 
     void addBook(Books book);
+    void updateBook(Books book);
 }
