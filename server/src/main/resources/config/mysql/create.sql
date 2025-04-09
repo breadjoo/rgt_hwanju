@@ -1,6 +1,6 @@
 use rgt;
 
-
+DROP TABLE IF EXISTS `books`;
 CREATE TABLE `books` (
                          `id`	int auto_increment primary key	NOT NULL,
                          `name`	varchar(250)	NULL,
