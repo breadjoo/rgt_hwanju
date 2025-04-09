@@ -29,5 +29,10 @@
         WHERE id = #{id}
     </update>
 
+    <delete id="deleteBook" parameterType="Long">
+        DELETE FROM books
+        WHERE id = #{id}
+    </delete>
+
 
 </mapper>

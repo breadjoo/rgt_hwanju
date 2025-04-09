@@ -13,4 +13,5 @@ public interface BooksMapper {
 
     void addBook(Books book);
     void updateBook(Books book);
+    void deleteBook(Long id);
 }

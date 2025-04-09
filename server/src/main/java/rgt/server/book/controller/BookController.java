@@ -3,6 +3,7 @@ package rgt.server.book.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -51,6 +52,13 @@ public class BookController {
     public ResponseEntity<Void> updateBook(@PathVariable("bookId") Long bookId,
                                            @RequestBody @Valid BookRequestDto dto) {
         bookService.updateBook(bookId, dto);
+        return ResponseEntity.noContent().build();
+    }
+
+    //책 삭제 (hard)
+    @DeleteMapping("/books/{bookId}")
+    public ResponseEntity<Void> deleteBook(@PathVariable("bookId") Long bookId) {
+        bookService.deleteBook(bookId);
         return ResponseEntity.noContent().build();
     }
 }

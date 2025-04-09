@@ -47,7 +47,7 @@ public class BookService {
     }
     public BookResponseDto updateBook(Long id, BookRequestDto dto) {
         Books book = booksMapper.getBookById(id)
-                .orElseThrow(() -> new BookNotFoundException("해당 책은 존재하지 않습니다. id " + id));
+                .orElseThrow(() -> new BookNotFoundException("해당 책은 존재하지 않아 수정할 수 없습니다. id " + id));
 
         book.setTitle(dto.getTitle());
         book.setAuthor(dto.getAuthor());
@@ -56,5 +56,13 @@ public class BookService {
         book.setStock(dto.getStock());
         booksMapper.updateBook(book);
         return BookResponseDto.from(book);
+    }
+
+    public void deleteBook(Long id) {
+        boolean exists = booksMapper.getBookById(id).isPresent();
+        if (!exists) {
+            throw new BookNotFoundException("해당 책은 존재하지 않아 삭제할 수 없습니다. id " + id);
+        }
+        booksMapper.deleteBook(id);
     }
 }
