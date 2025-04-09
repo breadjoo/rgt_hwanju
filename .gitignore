@@ -11,6 +11,16 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# =====================================
+# STS / Eclipse / IDEA 기타 파일
+# =====================================
+server/HELP.md
+server/.apt_generated
+server/.factorypath
+server/.springBeans
+server/.sts4-cache
+server/bin/
+
 # IDE configs (VSCode, WebStorm, etc.)
 client/.idea/
 client/.vscode/
