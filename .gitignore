@@ -1,12 +1,59 @@
-# client
-/client/node_modules
-/client/build
+# =====================================
+# Node / React (client)
+# =====================================
+client/node_modules/
+client/.env
+client/build/
+client/.DS_Store
 
-# server
-/server/.gradle
-/server/build
+# npm log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# general
+# IDE configs (VSCode, WebStorm, etc.)
+client/.idea/
+client/.vscode/
+
+# =====================================
+# Java / Spring Boot (server)
+# =====================================
+server/.gradle/
+server/build/
+server/out/
+server/.classpath
+server/.project
+server/.settings/
+server/.idea/
+server/.vscode/
+server/.DS_Store
+
+# Log files
+server/logs/
 *.log
+
+# Local config
+server/*.iml
+server/.env
+
+# =====================================
+# OS / Global
+# =====================================
 .DS_Store
-.env
+Thumbs.db
+*.swp
+*.tmp
+
+# =====================================
+# Docker
+# =====================================
+**/docker-compose.override.yml
+**/docker-compose.dev.yml
+**/docker-compose.prod.yml
+
+# =====================================
+# GitHub / Actions
+# =====================================
+*.token
+*.secret
+.github/*.secret
