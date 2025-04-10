@@ -42,8 +42,8 @@ jobs:
       - name: Build & Push Docker Image
         uses: docker/build-push-action@v6
         with:
-          context: .
-          file: ./Dockerfile
+          context: ./client
+          file: ./client/Dockerfile
           platforms: linux/amd64
           push: true
           tags: ${{ secrets.DOCKER_REPO_FE }}:latest
