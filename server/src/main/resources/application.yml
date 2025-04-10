@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: server
+  profiles:
+    active: dev
+  jackson:
+    time-zone: Asia/Seoul
+  datasource:
+    time-zone: Asia/Seoul
+
+mybatis:
+  type-aliases-package: rgt.server.book.model
+  mapper-locations: classpath:/mappers/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    org.mybatis: INFO
+    jdbc:
+      sqltiming: TRACE
+      resultset: TRACE
+      audit: TRACE
