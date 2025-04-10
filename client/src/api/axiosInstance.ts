@@ -5,4 +5,6 @@ const api = axios.create({
     withCredentials: true, // 필요 시 (쿠키 인증 시)
 });
 
+
+
 export default api;
