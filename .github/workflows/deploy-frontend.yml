@@ -28,6 +28,7 @@ jobs:
           cat .env.production
 
       - name: Build React App
+        working-directory: ./client
         run: |
           export CI=false
           npm install
