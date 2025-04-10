@@ -2,6 +2,8 @@ package rgt.server.book.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import rgt.server.book.dto.BookRequestDto;
 import rgt.server.book.dto.BookResponseDto;
@@ -26,6 +28,7 @@ public class BookService {
                 .collect(Collectors.toList());
     }
 
+    @Cacheable (value = "books", key = "#id")
     public BookResponseDto getBookById(Long id) {
         log.info("도서 조회 : id={}", id);
         return booksMapper.getBookById(id)
@@ -45,6 +48,7 @@ public class BookService {
         booksMapper.addBook(book);
         return BookResponseDto.from(book);
     }
+    @CacheEvict(value = "books", key = "#id")
     public BookResponseDto updateBook(Long id, BookRequestDto dto) {
         Books book = booksMapper.getBookById(id)
                 .orElseThrow(() -> new BookNotFoundException("해당 책은 존재하지 않아 수정할 수 없습니다. id " + id));
@@ -64,5 +68,13 @@ public class BookService {
             throw new BookNotFoundException("해당 책은 존재하지 않아 삭제할 수 없습니다. id " + id);
         }
         booksMapper.deleteBook(id);
+    }
+
+    @CacheEvict(value = "books", key = "#id")
+    public void updateStock(Long id, int newStock) {
+        Books book = booksMapper.getBookById(id)
+                .orElseThrow(() -> new BookNotFoundException("해당 책은 존재하지 않습니다. id " + id));
+        book.setStock(newStock);
+        booksMapper.updateBook(book);
     }
 }
